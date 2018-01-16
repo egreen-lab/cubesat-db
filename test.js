@@ -3,7 +3,7 @@
 const assert = require('assert')
 const CubeSatDB = require('.')
 const rimraf = require('rimraf')
-const {name, version} = require('./package.json')
+const { name, version } = require('./package.json')
 
 function clean () {
   rimraf.sync('test')
@@ -11,8 +11,8 @@ function clean () {
 }
 
 before(async function () {
-  clean()
   this.cube = new CubeSatDB('test')
+  console.log(this.cube)
   await new Promise((resolve, reject) => {
     this.cube.ipfs.on('error', reject)
     this.cube.ipfs.once('ready', resolve)
